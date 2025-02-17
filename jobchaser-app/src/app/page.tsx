@@ -4,11 +4,12 @@ import JobList from "./components/JobList";
 import SearchBar from "./components/SearchBar";
 import { AllJobProps } from "../../types/types";
 import "./page.css";
-
+import JobDetails from "./components/JobDetails";
 function Home() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [jobs, setJobs] = useState<AllJobProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [selectedJob, setSelectedJob] = useState<AllJobProps | null>(null);
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -33,14 +34,33 @@ function Home() {
     );
   });
 
+  const handleJobClick = (job: AllJobProps) => {
+    setSelectedJob(job);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedJob(null);
+  };
+
   return (
     <div>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />;
-      <JobList
-        jobs={filteredJobs}
-        loading={loading}
-        onJobClick={(job) => console.log(job)}
-      />
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
+      {selectedJob ? (
+        <JobDetails job={selectedJob} onClose={handleCloseDetails} />
+      ) : loading ? (
+        <p className="text-center text-gray-500">Loading jobs...</p>
+      ) : filteredJobs.length === 0 ? (
+        <p className="text-center text-red-500 font-semibold mt-4">
+          No jobs found. Try a different search term.
+        </p>
+      ) : (
+        <JobList
+          jobs={filteredJobs}
+          loading={loading}
+          onJobClick={handleJobClick}
+        />
+      )}
     </div>
   );
 }
