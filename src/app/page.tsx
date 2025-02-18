@@ -2,14 +2,18 @@
 import { useState, useEffect } from "react";
 import JobList from "./components/JobList";
 import SearchBar from "./components/SearchBar";
+import JobDetails from "./components/JobDetails";
 import { AllJobProps } from "../../types/types";
 import "./page.css";
-import JobDetails from "./components/JobDetails";
+import { useTheme } from "./components/ThemeContext";
+import Image from "next/image";
+
 function Home() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [jobs, setJobs] = useState<AllJobProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [selectedJob, setSelectedJob] = useState<AllJobProps | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -43,7 +47,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className={theme}>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
       {selectedJob ? (
@@ -51,9 +55,17 @@ function Home() {
       ) : loading ? (
         <p className="text-center text-gray-500">Loading jobs...</p>
       ) : filteredJobs.length === 0 ? (
-        <p className="text-center text-red-500 font-semibold mt-4">
-          No jobs found. Try a different search term.
-        </p>
+        <div className="flex flex-col items-center mt-6">
+          <Image
+            src="/react.svg"
+            width={200}
+            height={200}
+            alt="No jobs found"
+          />
+          <p className="text-center text-gray-600 font-semibold mt-4">
+            No jobs available. Build a React app first, then come back!
+          </p>
+        </div>
       ) : (
         <JobList
           jobs={filteredJobs}
