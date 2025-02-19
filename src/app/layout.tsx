@@ -28,7 +28,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          <header className="header flex items-center justify-between text-white p-4 shadow-md">
+          <header className="header flex items-center justify-between px-5 py-2">
             <Link
               href="/signin"
               className="px-4 py-2 bg-white text-black rounded-md font-semibold hover:bg-gray-200 transition"
