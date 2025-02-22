@@ -1,9 +1,9 @@
-[🔗 Live deployed Jobchaser site ()]
+🔗 Live deployed Jobchaser site: [https://jobchaser.netlify.app]
 
 🔗 Links
 
 - GitHub Repository: [https://github.com/AleksaSolevic/jobchaser-app.git]
-- Live Demo: []
+- Live Demo: [https://jobchaser.netlify.app]
 
 ## Overview
 
