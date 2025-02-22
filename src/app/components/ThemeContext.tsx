@@ -20,20 +20,23 @@ const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
+
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme") as Theme | null;
-    if (storedTheme) {
-      setTheme(storedTheme);
-      document.documentElement.className = storedTheme;
-    }
+    const initialTheme = storedTheme || "dark";
+    setTheme(initialTheme);
+    document.documentElement.className = initialTheme;
   }, []);
+
+  useEffect(() => {
+    document.documentElement.className = theme;
+  }, [theme]);
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-    document.documentElement.className = newTheme;
   };
 
   return (
