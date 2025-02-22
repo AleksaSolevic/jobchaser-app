@@ -1,6 +1,7 @@
 import React from "react";
 import { AllJobProps } from "../../../types/types";
 import Image from "next/image";
+
 interface JobListComponentProps {
   jobs: AllJobProps[];
   loading: boolean;

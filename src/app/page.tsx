@@ -1,5 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "./redux/store";
 import JobList from "./components/JobList";
 import SearchBar from "./components/SearchBar";
 import JobDetails from "./components/JobDetails";
@@ -7,6 +9,7 @@ import { AllJobProps } from "../../types/types";
 import "./page.css";
 import { useTheme } from "./components/ThemeContext";
 import Image from "next/image";
+import FilterJobs from "./components/FilterJobs";
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -14,6 +17,7 @@ function Home() {
   const [loading, setLoading] = useState<boolean>(true);
   const [selectedJob, setSelectedJob] = useState<AllJobProps | null>(null);
   const { theme } = useTheme();
+  const filters = useSelector((state: RootState) => state.jobFilter.value);
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -32,10 +36,18 @@ function Home() {
     fetchJobs();
   }, []);
 
-  const filteredJobs = jobs.filter((job) => {
+  const searchedJobs = jobs.filter((job) => {
     return Object.values(job).some((value) =>
       value.toString().toLowerCase().includes(searchTerm.toLowerCase())
     );
+  });
+
+  const filteredJobs = searchedJobs.filter((job) => {
+    return filters.length === 0
+      ? true
+      : filters.every(
+          (filter) => job.role.toLowerCase() === filter.toLowerCase()
+        );
   });
 
   const handleJobClick = (job: AllJobProps) => {
@@ -49,12 +61,13 @@ function Home() {
   return (
     <div className={theme}>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <FilterJobs />
 
       {selectedJob ? (
         <JobDetails job={selectedJob} onClose={handleCloseDetails} />
       ) : loading ? (
         <p className="text-center text-gray-500">Loading jobs...</p>
-      ) : filteredJobs.length === 0 ? (
+      ) : searchedJobs.length === 0 ? (
         <div className="flex flex-col items-center mt-6">
           <Image
             src="/react.svg"
