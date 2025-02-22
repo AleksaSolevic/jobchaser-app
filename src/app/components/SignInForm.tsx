@@ -27,7 +27,10 @@ export default function SignIn() {
         <input
           type="email"
           placeholder="Email"
-          className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg mb-3 text-gray-900 dark:text-gray-100 placeholder-gray-700 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500"
+          className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg mb-3 
+             bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 
+             placeholder-gray-700 dark:placeholder-gray-400 
+             focus:ring-2 focus:ring-blue-500"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -35,7 +38,10 @@ export default function SignIn() {
         <input
           type="password"
           placeholder="Password"
-          className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg mb-4 text-gray-900 dark:text-gray-100 placeholder-gray-700 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500"
+          className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg mb-4 
+             bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 
+             placeholder-gray-700 dark:placeholder-gray-400 
+             focus:ring-2 focus:ring-blue-500"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -55,12 +61,12 @@ export default function SignIn() {
         </p>
       </form>
 
-      <Link
+      {/* <Link
         href="/"
         className="absolute bottom-5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition"
       >
         Back to Job-chaser?
-      </Link>
+      </Link> */}
     </div>
   );
 }
