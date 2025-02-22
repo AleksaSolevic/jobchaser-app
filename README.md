@@ -1,9 +1,14 @@
-🔗 Live deployed Jobchaser site: [https://jobchaser.netlify.app]
+🔗 Live deployed Jobchaser:
+-Vercel site: [https://u07jobchaser.vercel.app/]
+-Netlify site: [https://u07jobchaser.netlify.app]
 
 🔗 Links
 
-- GitHub Repository: [https://github.com/AleksaSolevic/jobchaser-app.git]
-- Live Demo: [https://jobchaser.netlify.app]
+- GitHub Repository:
+  [https://github.com/AleksaSolevic/jobchaser-app.git]
+- Live Demo:
+  Vercel: [https://u07jobchaser.vercel.app/]
+  Netlify:[https://u07jobchaser.netlify.app]
 
 ## Overview
 
