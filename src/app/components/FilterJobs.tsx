@@ -1,5 +1,4 @@
-"use client"; // Required because Redux uses client-side hooks
-
+"use client";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../redux/store";
 import { addFilterWord, removeFilterWord } from "../redux/jobSlice";
