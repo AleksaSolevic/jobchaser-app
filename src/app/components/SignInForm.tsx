@@ -60,13 +60,6 @@ export default function SignIn() {
           </Link>
         </p>
       </form>
-
-      {/* <Link
-        href="/"
-        className="absolute bottom-5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition"
-      >
-        Back to Job-chaser?
-      </Link> */}
     </div>
   );
 }

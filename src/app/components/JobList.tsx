@@ -54,7 +54,7 @@ const JobList: React.FC<JobListComponentProps> = ({
               <button
                 className="w-full mt-2.5 px-3 py-2 bg-[#627991] text-white border-none rounded-md text-sm cursor-pointer transition-colors duration-200 hover:bg-[#4078b3]"
                 onClick={() => onJobClick(job)}
-                aria-label={`View job details for ${job.position} at ${job.company}`}
+                // aria-label={`View job details for ${job.position} at ${job.company}`}
               >
                 View Job
               </button>

@@ -13,24 +13,22 @@ export default function Counter() {
   };
 
   return (
-    <>
-      <div className="flex flex-row justify-center gap-5">
-        <CheckboxWithLabel
-          label="Frontend"
-          initialChecked={value.includes("Frontend")}
-          onChange={(checked) => handleCheckboxChange("Frontend", checked)}
-        />
-        <CheckboxWithLabel
-          label="Backend"
-          initialChecked={value.includes("Backend")}
-          onChange={(checked) => handleCheckboxChange("Backend", checked)}
-        />
-        <CheckboxWithLabel
-          label="Fullstack"
-          initialChecked={value.includes("Fullstack")}
-          onChange={(checked) => handleCheckboxChange("Fullstack", checked)}
-        />
-      </div>
-    </>
+    <div className="flex flex-row justify-center gap-5">
+      <CheckboxWithLabel
+        label="Frontend"
+        initialChecked={value.includes("Frontend")}
+        onChange={(checked) => handleCheckboxChange("Frontend", checked)}
+      />
+      <CheckboxWithLabel
+        label="Backend"
+        initialChecked={value.includes("Backend")}
+        onChange={(checked) => handleCheckboxChange("Backend", checked)}
+      />
+      <CheckboxWithLabel
+        label="Fullstack"
+        initialChecked={value.includes("Fullstack")}
+        onChange={(checked) => handleCheckboxChange("Fullstack", checked)}
+      />
+    </div>
   );
 }
